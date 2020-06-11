@@ -406,73 +406,27 @@ async function loadJSON(path) {
 	return dataset;
 }
 
-function plotStocks(stocks) {
-	let prices = [];
-	for (datum of stocks) {
-		log(datum);
-		prices.push([datum['Date'], datum['Adj Close']]);
-	}
-	Highcharts.chart('stockChart', {
-		chart: {
-		  type: 'area' 
-		},
+function plotJobs() {
+	Highcharts.chart('jobChart', {
 		title: {
-		  text: 'Dynamic Growth'
+			text: 'Applicants Jobs'
 		},
-		subtitle: {
-		  text: 'Stock Prices of D&W Corp. from 2015-Present'
-		},
-		legend : false,
-		xAxis: {
-		  title: {
-			enabled: true,
-            text: '<b>Date</b>'
-			},
-			type: 'datetime',
-			crosshair : true,
-			min : 1449619200000,
-			max : 1581984000000,
-			tickInterval : 3600 * 1000 * 24 * 115,
-			labels: {
-				formatter: function() {
-				  return Highcharts.dateFormat('%m/ %e /%y', this.value);
-				}
-			}
-		},
-		yAxis: {
-		  title: {
-			enabled: true,
-			text: "<b>Adj Close Stock Price</b>"
-			},
-			crosshair: {
-                label: {
-                    enabled: true,
-					format: '{value:.2f}',
-					align: "right"
-				}
-            },
-			tickInterval: 20,
-			max: 160
-		},
-		tooltip: {
-			formatter: function () {
-				return '$' + this.y.toFixed(2);
-			}
+		chart: {
+			type: 'pie'
 		},
 		series: [{
-		  data: prices
-		}]
+			name: "Jobs",
+			data: [{"name":"IT","y":42.9141509678},{"name":"Advanced Mfg","y":15.1719312793},{"name":"Other Economic Sector","y":11.5622813609},{"name":"Finance","y":6.9575807831},{"name":"Educational Services","y":6.4393252313},{"name":"Health Care","y":5.1929206292},{"name":"Retail","y":3.3168355316},{"name":"Aerospace","y":3.0447513669},{"name":"Hospitality","y":1.2956388795},{"name":"Automotive","y":0.9095384934},{"name":"Energy","y":0.8525303827},{"name":"Construction","y":0.8136612163},{"name":"Transportation","y":0.6789147729},{"name":"Biotechnology","y":0.355005053},{"name":"Agribusiness","y":0.3213184421},{"name":"Geospatial","y":0.1269726102},{"name":"Homeland Security","y":0.0466429997}]
+		}
+		]
 	});
 }
 
 function init() {
+	plotJobs();
 	salesPromise = loadJSON('./data/sales.json');
-	stocksPromise = loadJSON('./data/stocks.json');
 	salesPromise.then(function (sales) {
 		plotSales(sales);
-	});
-	stocksPromise.then(function (stocks) {
-		plotStocks(stocks);
 	});
 }
 
