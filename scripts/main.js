@@ -186,6 +186,10 @@ function plotMap() {
 			map: 'custom/world-robinson'
 		},
 
+		subtitle: {
+			text: "Data: Kaggle, <a href = 'http://www.kaggle.com/jboysen/us-perm-visas'> US Permanent Visa Applications</a>"
+		},
+
 		title: {
 			text: 'Global US Visa Application Data (2012 - 2017)'
 		},
@@ -262,7 +266,7 @@ function plotStats() {
 			} 
 		},
 		legend: {
-			
+
 		},
 		yAxis: {
 			title: {
