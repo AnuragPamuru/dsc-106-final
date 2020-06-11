@@ -187,7 +187,13 @@ function plotMap() {
 		},
 
 		title: {
-			text: 'Global US Visa Application Data'
+			text: 'Global US Visa Application Data (2012 - 2017)'
+		},
+
+		tooltip: {
+			formatter: function(){
+				return this.point.name + " had " + (acceptData[this.point["hc-key"]]["Y"] + acceptData[this.point["hc-key"]]["N"]) + " applicants";
+			} 
 		},
 
 		colorAxis: {
