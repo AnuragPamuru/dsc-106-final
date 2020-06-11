@@ -303,12 +303,16 @@ function plotStats() {
 		tooltip: {
 			formatter: function(){
 				return ((Number(this.y) * 100)
-				.toFixed(1)) + "%";
+				.toFixed(1)) + "%" + "\n" + this.point.info;
 			} 
 		},
 		series: [{
 			name: "Visa Types",
-			data: [{"name":"H-1B","y":0.85157161},{"name":"L-1","y":0.0362001503},{"name":"F-1","y":0.0284781426},{"name":"Parolee","y":0.0195382343},{"name":"Other","y":0.06421186286958092}]
+			data: [{"name":"H-1B","y":0.85157161, "info" : "Work Visa for professionals working in US"},
+					{"name":"L-1","y":0.0362001503, "info" : "Work Visa for foreigners opening business in US"},
+					{"name":"F-1","y":0.0284781426, "info" : "Student Visa"},
+					{"name":"Parolee","y":0.0195382343, "info" : "A permit for non-US nationals who do not have a visa but need to re-enter"},
+					{"name":"Other","y":0.06421186286958092, "info" : "Other"}]
 		}
 		]
 	});
