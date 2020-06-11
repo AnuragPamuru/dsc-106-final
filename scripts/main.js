@@ -403,7 +403,18 @@ function plotStats() {
 		series: [
 			{
 				name: "Country",
-				data: [23216,2127,1633,1606,1056,834,536,473,441,6669]
+				data: [{"y":23216,"color":'orange'},
+				{"y":2127,"color":'red'},
+				{"y":1633,"color":'blue'},
+				{"y":1606,"color":'red'},
+				{"y":1056,"color":'red'},
+				{"y":834,"color":'blue'},
+				{"y":536,"color":'green'},
+				{"y":473,"color":'red'},
+				{"y":441,"color":'orange'},
+				{"y":6669,"color":'black'}]
+		// 		colors: [, '', '#ED561B', '#DDDF00',
+		// '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4','#FFF263'],
 			}
 		]
 	});
