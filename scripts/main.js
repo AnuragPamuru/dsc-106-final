@@ -272,7 +272,7 @@ function plotPies(country){
 		series: [{
 			name: '',	
 			data: [
-				{name: 'Advanced Mfg', y: typeData[country]['Advanced Mfg']},
+				{name: 'Manufacturing', y: typeData[country]['Advanced Mfg']},
 				{name: 'Aerospace', y: typeData[country]['Aerospace']},
 				{name: 'Agribusiness', y: typeData[country]['Agribusiness']},
 				{name: 'Automotive', y: typeData[country]['Automotive']},
