@@ -17,6 +17,9 @@ function plotMap() {
 	// Prepare demo data
 	// Data is joined to map using value of 'hc-key' property by default.
 	// See API docs for 'joinBy' for more info on linking data and map.
+
+	
+
 	var rankData = [['kg', 1],
 	['tg', 2],
 	['fj', 3],
@@ -202,11 +205,6 @@ function plotMap() {
 				} 
 			}
 		},
-		tooltip:{
-			formatter: function(){
-				return this.point.name + " : " + (acceptData[this.point["hc-key"]]["Y"] + acceptData[this.point["hc-key"]]["N"]);
-			}
-		},
 		series: [{
 			data: rankData,
 			name: 'Rank',
@@ -230,6 +228,142 @@ function plotSales(sales) {
 
 	// Make sales data available globally
 	data = sales;
+}
+function plotColumn(continent) {
+	let dingusValues = {
+		values: [],
+		text: "Dinguses"
+	}
+	let widgetValues = {
+		values: [],
+		text: "Widgets"
+	}
+	let sales = data[continent];
+	for (const datum of sales) {
+		let month = datum['Month'];
+		let dingus = datum['Dingus'];
+		let widget = datum['Widget'];
+		dingusValues['values'].push([month, dingus]);
+		widgetValues['values'].push([month, widget]);
+	}
+	Highcharts.chart('salesPerMonthChart', {
+
+		title: {
+		  text: '<b>Monthly Sales</b>'
+		},
+	  
+		yAxis: {
+		  title: {
+			text: '<b>Number of Units Sold</b>'
+		  },
+		  softMax: 1.0,
+		  softMin: 0.0
+		},
+	  
+		xAxis: {
+		  	title: {
+				text: '<b>Month</b>'
+			},
+			type: "datetime",
+			labels: {
+				formatter : function(){
+					return Highcharts.dateFormat('%B', this.value);
+				}
+			}
+		},
+		tooltip: {
+			formatter: function(){
+				return this.y;
+			} 
+		},
+		plotOptions: {
+            series: {
+                pointStart: Date.UTC(2014,0,1),
+                pointInterval: 24 * 3600 * 1000 * 31
+            }
+        },
+		series: [{
+		  name: 'Dinguses',
+		  data: dingusValues['values'], 
+		  color: "#2AA4BF",
+		  marker: {
+			symbol: 'circle'
+		  }	
+		}, {
+		  name: 'Widgets',
+		  data: widgetValues['values'],
+		  color: "#D92323",
+		  marker: {
+			symbol: 'circle'
+		  }
+		}]
+	  });
+}
+
+function plotPie(continent) {
+	let dingusValues = {
+		values: [],
+		text: "Dinguses"
+	}
+	let widgetValues = {
+		values: [],
+		text: "Widgets"
+	}
+	let sales = data[continent];
+	let dinguses = 0, widgets = 0;
+	for (const datum of sales) {
+		dinguses += datum['Dingus'];
+		widgets += datum['Widget'];
+	}
+	dingusValues['values'].push(dinguses);
+	widgetValues['values'].push(widgets);
+	var chart = Highcharts.chart('totalSalesChart', {
+		chart: {
+		  plotShadow: false,
+		  type: 'pie'
+		},
+		title: {
+		  text: '<b>Total Sales</b>'
+		},
+		tooltip: {
+			formatter: function(){
+				return this.y;
+			} 
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: true,
+					format: '{point.percentage:.1f} %',
+					distance: -50,				
+					style: {
+						fontSize: "20px",
+						textOutline: "none",
+						color: "#FFF"
+					}
+				},
+				showInLegend: true,
+				startAngle : 90
+			}
+		},
+		series: [{
+			data: [{
+			  name: 'Dinguses',
+			  y: dinguses,
+			  color: "#2AA4BF"
+			}, {
+			  name: 'Widgets',
+			  y: widgets,
+			  color: "#D92323"
+			}]
+		}]
+	  });
+	if (continent === 'ANTARCTICA') {	
+		chart.destroy();
+		return;
+	}
 }
 
 function updateScoreCards(country) {
@@ -269,7 +403,16 @@ function plotStats() {
 		series: [
 			{
 				name: "Country",
-				data: [23216,2127,1633,1606,1056,834,536,473,441,6669]
+				data: [{"y":23216,"color":'orange'},
+				{"y":2127,"color":'red'},
+				{"y":1633,"color":'blue'},
+				{"y":1606,"color":'red'},
+				{"y":1056,"color":'red'},
+				{"y":834,"color":'blue'},
+				{"y":536,"color":'green'},
+				{"y":473,"color":'red'},
+				{"y":441,"color":'orange'},
+				{"y":6669,"color":'black'}]
 			}
 		]
 	});
