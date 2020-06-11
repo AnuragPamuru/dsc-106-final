@@ -261,6 +261,9 @@ function plotStats() {
 				return ((Number(this.y)));
 			} 
 		},
+		legend: {
+			
+		},
 		yAxis: {
 			title: {
 				text: "Number of Visa Applications"
@@ -273,16 +276,16 @@ function plotStats() {
 		series: [
 			{
 				name: "Country",
-				data: [{"y":23216,"color":'red'},
-				{"y":2127,"color":'red'},
-				{"y":1633,"color":'blue'},
-				{"y":1606,"color":'red'},
-				{"y":1056,"color":'red'},
-				{"y":834,"color":'blue'},
-				{"y":536,"color":'green'},
-				{"y":473,"color":'red'},
-				{"y":441,"color":'red'},
-				{"y":6669,"color":'black'}]
+				data: [{"y":23216,"color":'red', "continent": "Asia"},
+				{"y":2127,"color":'red', "continent": "Asia"},
+				{"y":1633,"color":'blue', "continent": "North America"},
+				{"y":1606,"color":'red', "continent": "Asia"},
+				{"y":1056,"color":'red', "continent": "Asia"},
+				{"y":834,"color":'blue', "continent": "North America"},
+				{"y":536,"color":'green', "continent": "Europe"},
+				{"y":473,"color":'red', "continent": "Asia"},
+				{"y":441,"color":'red', "continent": "Asia"},
+				{"y":6669,"color":'black', "continent": "Other"}]
 			}
 		]
 	});
