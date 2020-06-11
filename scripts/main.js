@@ -262,7 +262,7 @@ function plotPies(country){
 						return a.y - b.y;
 					});
 		
-					this.series[0].setData(newData);
+					this.series[0].setData(newData.reverse());
 				}
 			}
 		},
