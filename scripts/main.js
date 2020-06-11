@@ -353,7 +353,7 @@ function plotPie(continent) {
 	}
 }
 
-function updateScoreCards(continent) {
+function updateScoreCards(country) {
 	select('acceptedApps').innerHTML = acceptData[country]["Y"];
 	select('deniedApps').innerHTML = acceptData[country]["N"];
 	select('percentApps').innerHTML = (Number(acceptData[country]["percent"]) * 100).toFixed(2) + "%";
