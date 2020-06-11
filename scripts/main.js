@@ -191,7 +191,7 @@ function plotMap() {
 			name: 'Rank',
 			states: {
 				hover: {
-					color: '#BADA55'
+					color: 'black'
 				}
 			}
 		}]
