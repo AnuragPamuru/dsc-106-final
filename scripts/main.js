@@ -267,7 +267,7 @@ function plotStats() {
 		series: [
 			{
 				name: "Country",
-				data: [{"y":23216,"color":'orange'},
+				data: [{"y":23216,"color":'red'},
 				{"y":2127,"color":'red'},
 				{"y":1633,"color":'blue'},
 				{"y":1606,"color":'red'},
@@ -275,7 +275,7 @@ function plotStats() {
 				{"y":834,"color":'blue'},
 				{"y":536,"color":'green'},
 				{"y":473,"color":'red'},
-				{"y":441,"color":'orange'},
+				{"y":441,"color":'red'},
 				{"y":6669,"color":'black'}]
 			}
 		]
