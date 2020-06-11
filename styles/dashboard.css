@@ -3,7 +3,11 @@
 }
 
 h1, h3 {
-    font-family: 'Paytone One', sans-serif;
+    font-family: 'Staatliches', sans-serif;
+}
+
+h1{
+    text-align: center;
 }
 
 #vitalScorecards {
