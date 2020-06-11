@@ -362,7 +362,7 @@ async function loadJSON(path) {
 	return dataset;
 }
 
-function plotJobs() {
+function plotStats() {
 	Highcharts.chart('jobChart', {
 		title: {
 			text: 'Applicants Jobs'
@@ -370,16 +370,73 @@ function plotJobs() {
 		chart: {
 			type: 'pie'
 		},
+		tooltip: {
+			formatter: function(){
+				return ((Number(this.y))
+				.toFixed(1)) + "%";
+			} 
+		},
 		series: [{
 			name: "Jobs",
 			data: [{"name":"IT","y":42.9141509678},{"name":"Advanced Mfg","y":15.1719312793},{"name":"Other Economic Sector","y":11.5622813609},{"name":"Finance","y":6.9575807831},{"name":"Educational Services","y":6.4393252313},{"name":"Health Care","y":5.1929206292},{"name":"Retail","y":3.3168355316},{"name":"Aerospace","y":3.0447513669},{"name":"Hospitality","y":1.2956388795},{"name":"Automotive","y":0.9095384934},{"name":"Energy","y":0.8525303827},{"name":"Construction","y":0.8136612163},{"name":"Transportation","y":0.6789147729},{"name":"Biotechnology","y":0.355005053},{"name":"Agribusiness","y":0.3213184421},{"name":"Geospatial","y":0.1269726102},{"name":"Homeland Security","y":0.0466429997}]
 		}
 		]
 	});
+
+	Highcharts.chart('typeChart', {
+		title: {
+			text: 'Visa Types'
+		},
+		chart: {
+			type: 'pie'
+		},
+		tooltip: {
+			formatter: function(){
+				return ((Number(this.y) * 100)
+				.toFixed(1)) + "%";
+			} 
+		},
+		series: [{
+			name: "Visa Types",
+			data: [{"name":"H-1B","y":0.85157161},{"name":"L-1","y":0.0362001503},{"name":"F-1","y":0.0284781426},{"name":"Parolee","y":0.0195382343},{"name":"Other","y":0.06421186286958092}]
+		}
+		]
+	});
+
+	Highcharts.chart('acceptChart', {
+		title: {
+			text: 'Visa Accept Rate'
+		},
+		chart: {
+			type: 'bar'
+		},
+		tooltip: {
+			formatter: function(){
+				return ((Number(this.y))
+				.toFixed(1)) + "%";
+			} 
+		},
+		xAxis: {
+			categories: ['H-1B', 'L-1', 'F-1', 'Parolee', 'Other'],
+			title: {
+				text: "Visa Type"
+			}
+		},
+		yAxis: {
+			title: {
+				text: "Acceptance Rate (%)"
+			}
+		},
+		series: [{
+			name: "Visa Accept Rate",
+			data: [73.0664240218,84.9526823479,86.2562634216,67.191283293,84.8806366048]
+		}
+		]
+	});
 }
 
 function init() {
-	plotJobs();
+	plotStats();
 	salesPromise = loadJSON('./data/sales.json');
 	salesPromise.then(function (sales) {
 		plotSales(sales);

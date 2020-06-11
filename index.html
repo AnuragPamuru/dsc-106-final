@@ -8,7 +8,6 @@
 	<title>DSC106 - Final Project</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Paytone+One&display=swap" rel="stylesheet" />
 	<link href="./styles/dashboard.css" rel="stylesheet" />
-	<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/maps/modules/map.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -46,7 +45,27 @@
 	</section>
 	<hr />
 
-	<section id="jobChart"></section>
+	<section class="chart-parent--container">
+		<section id="jobChart" class="chart--container"></section>
+		<section id="typeChart" class="chart--container"></section>
+		<section id="acceptChart" class="chart--container"></section>
+	</section>
+
+	<b>Visa Types</b>
+
+	<dl>
+		<dt>H-1B</dt>
+		<dd>- work visa for professionals working in US</dd>
+		<dt>L-1</dt>
+		<dd>- work visa for foreiners opening business in US</dd>
+		<dt>F-1</dt>
+		<dd>- student visa</dd>
+		<dt>Parolee</dt>
+		<dd>- a permit for non-US national who does not have valid immigrant visa, but need to reenter</dd>
+	</dl>
+
+
+	
 
 </body>
 
