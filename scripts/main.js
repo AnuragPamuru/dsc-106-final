@@ -437,7 +437,8 @@ function plotStats() {
 		yAxis: {
 			title: {
 				text: "Acceptance Rate (%)"
-			}
+			},
+			max: 1.0
 		},
 		xAxis: {
 			categories: ['Educational Services', 'Finance', 'Health Care', 'IT']
