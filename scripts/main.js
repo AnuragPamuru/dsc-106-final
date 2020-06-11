@@ -186,8 +186,18 @@ function plotMap() {
 			map: 'custom/world-robinson'
 		},
 
+		subtitle: {
+			text: "Data: Kaggle, <a href = 'http://www.kaggle.com/jboysen/us-perm-visas'> US Permanent Visa Applications</a>"
+		},
+
 		title: {
-			text: 'Global US Visa Application Data'
+			text: 'Global US Visa Application Data (2012 - 2017)'
+		},
+
+		tooltip: {
+			formatter: function(){
+				return this.point.name + " had " + (acceptData[this.point["hc-key"]]["Y"] + acceptData[this.point["hc-key"]]["N"]) + " applicants";
+			} 
 		},
 
 		colorAxis: {
@@ -255,6 +265,9 @@ function plotStats() {
 				return ((Number(this.y)));
 			} 
 		},
+		legend: {
+
+		},
 		yAxis: {
 			title: {
 				text: "Number of Visa Applications"
@@ -267,16 +280,16 @@ function plotStats() {
 		series: [
 			{
 				name: "Country",
-				data: [{"y":23216,"color":'orange'},
-				{"y":2127,"color":'red'},
-				{"y":1633,"color":'blue'},
-				{"y":1606,"color":'red'},
-				{"y":1056,"color":'red'},
-				{"y":834,"color":'blue'},
-				{"y":536,"color":'green'},
-				{"y":473,"color":'red'},
-				{"y":441,"color":'orange'},
-				{"y":6669,"color":'black'}]
+				data: [{"y":23216,"color":'red', "continent": "Asia"},
+				{"y":2127,"color":'red', "continent": "Asia"},
+				{"y":1633,"color":'blue', "continent": "North America"},
+				{"y":1606,"color":'red', "continent": "Asia"},
+				{"y":1056,"color":'red', "continent": "Asia"},
+				{"y":834,"color":'blue', "continent": "North America"},
+				{"y":536,"color":'green', "continent": "Europe"},
+				{"y":473,"color":'red', "continent": "Asia"},
+				{"y":441,"color":'red', "continent": "Asia"},
+				{"y":6669,"color":'black', "continent": "Other"}]
 			}
 		]
 	});
