@@ -366,6 +366,35 @@ async function loadJSON(path) {
 }
 
 function plotStats() {
+	Highcharts.chart('countryChart', {
+		title: {
+			text: 'Number of Visa Applications by Country'
+		},
+		chart: {
+			type: 'bar'
+		},
+		tooltip: {
+			formatter: function(){
+				return ((Number(this.y)));
+			} 
+		},
+		yAxis: {
+			title: {
+				text: "Number of Visa Applications"
+			}
+		},
+		xAxis: {
+			categories: ['INDIA', 'CHINA', 'CANADA', 'SOUTH KOREA', 'PHILIPPINES',
+			'MEXICO', 'UNITED KINGDOM', 'TAIWAN', 'PAKISTAN', 'Other']
+		},
+		series: [
+			{
+				name: "Country",
+				data: [23216,2127,1633,1606,1056,834,536,473,441,6669]
+			}
+		]
+	});
+
 	Highcharts.chart('jobChart', {
 		title: {
 			text: 'Applicants Jobs'
@@ -381,9 +410,8 @@ function plotStats() {
 		},
 		series: [{
 			name: "Jobs",
-			data: [{"name":"IT","y":42.9141509678},{"name":"Advanced Mfg","y":15.1719312793},{"name":"Other Economic Sector","y":11.5622813609},{"name":"Finance","y":6.9575807831},{"name":"Educational Services","y":6.4393252313},{"name":"Health Care","y":5.1929206292},{"name":"Retail","y":3.3168355316},{"name":"Aerospace","y":3.0447513669},{"name":"Hospitality","y":1.2956388795},{"name":"Automotive","y":0.9095384934},{"name":"Energy","y":0.8525303827},{"name":"Construction","y":0.8136612163},{"name":"Transportation","y":0.6789147729},{"name":"Biotechnology","y":0.355005053},{"name":"Agribusiness","y":0.3213184421},{"name":"Geospatial","y":0.1269726102},{"name":"Homeland Security","y":0.0466429997}]
-		}
-		]
+			data: [{"name":"IT","y":42.9141509678},{"name":"Advanced Mfg","y":15.1719312793},{"name":"Other Economic Sector","y":11.5622813609},{"name":"Finance","y":6.9575807831},{"name":"Educational Services","y":6.4393252313},{"name":"Health Care","y":5.1929206292},{"name":"Retail","y":3.3168355316},{"name":"Aerospace","y":3.0447513669},{"name":"Other","y":5.4002228499}]
+		}]
 	});
 
 	Highcharts.chart('typeChart', {
@@ -408,32 +436,40 @@ function plotStats() {
 
 	Highcharts.chart('acceptChart', {
 		title: {
-			text: 'Visa Accept Rate'
+			text: 'Visa Accept Rate Based on Jobs'
 		},
 		chart: {
 			type: 'bar'
 		},
 		tooltip: {
 			formatter: function(){
-				return ((Number(this.y))
+				return ((Number(this.y)*100)
 				.toFixed(1)) + "%";
 			} 
-		},
-		xAxis: {
-			categories: ['H-1B', 'L-1', 'F-1', 'Parolee', 'Other'],
-			title: {
-				text: "Visa Type"
-			}
 		},
 		yAxis: {
 			title: {
 				text: "Acceptance Rate (%)"
 			}
 		},
-		series: [{
-			name: "Visa Accept Rate",
-			data: [73.0664240218,84.9526823479,86.2562634216,67.191283293,84.8806366048]
-		}
+		xAxis: {
+			categories: ['Educational Services', 'Finance', 'Health Care', 'IT']
+		},
+		series: [
+			{
+				name: "H-1B",
+				data: [0.83310962, 0.89555284,
+					0.86620531, 0.82879538]
+			},
+			{
+				name: "L-1",
+				data: [
+					1.        , 0.87931034, 1.        , 0.85294118]
+			},
+			{
+				name: "F-1",
+				data: [0.807018,0.666667,0.764706,0.755814]
+			}
 		]
 	});
 }
