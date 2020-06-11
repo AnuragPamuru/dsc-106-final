@@ -35,6 +35,14 @@ h1, h3 {
     min-height: 400px;
 }
 
+.exp-parent--container {
+    display: flex;
+}
+
+.exp--container {
+    width: 100%;
+}
+
 #vitalScorecards h3 {
     color: black;
 }
